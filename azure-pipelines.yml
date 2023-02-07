@@ -5,10 +5,10 @@ pool:
 trigger:
   - main
 stages:
-  - stage: BuildStage_openmrs
+  - stage: BuildStageopenmrs
     displayName: CI
     jobs:
-      - job: mavenjob-openmrs
+      - job: mavenjobopenmrs
         displayName: maven
         steps:
           - task: Maven@3
