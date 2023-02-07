@@ -1,0 +1,20 @@
+---
+pool:
+  name: "Azure Pipelines" 
+  vmImage: 'ubuntu-latest'
+trigger:
+  - main
+stages:
+  - stage: BuildStage_openmrs
+    displayName: CI
+    jobs:
+      - job: mavenjob-openmrs
+        displayName: maven
+        steps:
+          - task: Maven@3
+            inputs:
+              mavenPomFile: 'pom.xml'
+              goals: 'package'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              jdkVersionOption: '1.8'
